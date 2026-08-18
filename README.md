@@ -1,5 +1,10 @@
 # coolms/entity
 
+[![CI](https://github.com/coolms/entity/actions/workflows/ci.yml/badge.svg)](https://github.com/coolms/entity/actions/workflows/ci.yml)
+[![Latest Version](https://img.shields.io/packagist/v/coolms/entity)](https://packagist.org/packages/coolms/entity)
+[![PHP](https://img.shields.io/badge/php-%E2%89%A5%208.5-777bb4)](https://www.php.net/releases/8.5/en.php)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 Entity contracts for the CoolMS platform, and the **extras** engine -- dynamic
 per-entity fields stored in a JSON column and described by a schema resolved at
 runtime.
@@ -48,3 +53,9 @@ translatable, orderable).
 - `coolms/entity-doctrine` -- ORM/DBAL adapters: mapping driver, validation
   listener, generated virtual columns, per-platform schema and upsert managers
 - `coolms/entity-bundle` -- Symfony integration
+
+## Installation
+
+```bash
+composer require coolms/entity
+```
