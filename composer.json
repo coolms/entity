@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.5",
         "coolms/core": "^2.0",
-        "coolms/rql": "^2.0",
+        "coolms/rql": "^1.0",
         "symfony/property-access": "^8.0",
         "symfony/serializer": "^8.0",
         "symfony/yaml": "^8.0"
