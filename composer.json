@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^8.5",
-        "coolms/core": "^1.0",
+        "coolms/core": "^2.0",
         "coolms/rql": "^1.0",
         "symfony/property-access": "^8.0",
         "symfony/serializer": "^8.0",
@@ -43,5 +43,10 @@
         "sort-packages": true
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-v2-generation": "2.0.x-dev"
+        }
+    }
 }
