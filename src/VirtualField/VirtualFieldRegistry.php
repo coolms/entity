@@ -13,7 +13,7 @@ use ReflectionClass;
 use ReflectionMethod;
 
 /**
- * Phase X-2.5b -- default `VirtualFieldRegistryInterface`
+ * Default `VirtualFieldRegistryInterface`
  * implementation.
  *
  * Resolves the entity alias to its FQCN via

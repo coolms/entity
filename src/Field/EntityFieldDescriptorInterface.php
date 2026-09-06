@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CoolMS\Entity\Field;
 
 /**
- * Phase X-2.5 — entity field-capability service.
+ * Entity field-capability service.
  *
  * Single source of truth for "what can be filtered/sorted/searched
  * on this entity type." Reads `#[FieldMeta]` attributes from the

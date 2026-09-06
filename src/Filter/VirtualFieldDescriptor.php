@@ -8,7 +8,7 @@ use Closure;
 use InvalidArgumentException;
 
 /**
- * Phase X-2.5b -- ORM-agnostic descriptor for a computed entity
+ * ORM-agnostic descriptor for a computed entity
  * field exposed to RQL filtering.
  *
  * Carries either a SQL expression (X strategy) or a translator

@@ -14,7 +14,7 @@ use CoolMS\Rql\FilterOp;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Phase X-2.5b -- registry aggregation from attribute discovery
+ * Registry aggregation from attribute discovery
  * plus tagged providers.
  */
 final class VirtualFieldRegistryTest extends TestCase

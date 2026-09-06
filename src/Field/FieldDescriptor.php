@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CoolMS\Entity\Field;
 
 /**
- * Phase X-2.5 — resolved field-capability descriptor.
+ * Resolved field-capability descriptor.
  *
  * Output of `EntityFieldDescriptorInterface::describe()`. Carries
  * the post-resolution view of one entity property (label resolved,
