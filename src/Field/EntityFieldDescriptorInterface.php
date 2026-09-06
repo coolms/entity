@@ -13,13 +13,13 @@ namespace CoolMS\Entity\Field;
  * `FieldDescriptor` value objects.
  *
  * Used by:
- *  - `EntityFieldsProvider` — exposes the list at
+ *  - `EntityFieldsProvider` -- exposes the list at
  *    `GET /api/v1/entity/{alias}/filters` so the document-generation
  *    wizard frontend can render filter UI per entity type.
- *  - `FilterAudienceMaterializer` — builds the RQL whitelist
+ *  - `FilterAudienceMaterializer` -- builds the RQL whitelist
  *    (allowedFields) for the audience-filter query.
  *
- * Implementations MUST be deterministic — repeated calls for the
+ * Implementations MUST be deterministic -- repeated calls for the
  * same FQCN produce identical descriptor lists in identical order.
  */
 interface EntityFieldDescriptorInterface

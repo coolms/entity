@@ -22,7 +22,7 @@ use CoolMS\Core\Attribute\ClassMeta;
  *  - SHOULD return identical FQCNs for the same alias on every
  *    call so retries against the same template produce stable
  *    schemas.
- *  - MAY be composed (e.g. the static `#[ClassMeta(alias:…)]`
+ *  - MAY be composed (e.g. the static `#[ClassMeta(alias:...)]`
  *    source layered on top of the EntityAliasRegistry).
  */
 interface EntityAliasRegistryInterface
@@ -31,7 +31,7 @@ interface EntityAliasRegistryInterface
      * Resolve an alias to its fully-qualified entity class name.
      * Accepts both the singular `alias` and the `aliasCollection`
      * form; returns the same FQCN either way. Returns `null` when
-     * the alias is unknown — callers turn that into a clear
+     * the alias is unknown -- callers turn that into a clear
      * user-facing error rather than guessing.
      *
      * @return class-string|null
@@ -39,7 +39,7 @@ interface EntityAliasRegistryInterface
     public function resolve(string $alias): ?string;
 
     /**
-     * Reverse lookup — the singular alias declared for an FQCN, or
+     * Reverse lookup -- the singular alias declared for an FQCN, or
      * `null` when no alias is registered. The collection-form alias
      * is not returned here; use `findByAlias` then read the meta to
      * discover both forms.
@@ -53,8 +53,8 @@ interface EntityAliasRegistryInterface
     public function has(string $alias): bool;
 
     /**
-     * The full singular-alias → FQCN map. Useful for error messages
-     * ("Available aliases: …") and admin tooling. Collection
+     * The full singular-alias -> FQCN map. Useful for error messages
+     * ("Available aliases: ...") and admin tooling. Collection
      * aliases are not included here; query them via `findByAlias`
      * or `isCollectionAlias`.
      *

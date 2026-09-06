@@ -18,13 +18,13 @@ use RuntimeException;
  * repository, then delegates field extraction to
  * {@see FieldExtractorInterface}.
  *
- * Priority is 0, the tag default — custom resolvers register at
+ * Priority is 0, the tag default -- custom resolvers register at
  * higher priorities to take over before the fallback fires. Tagged by
  * autoconfiguration on `EntityResolverInterface`, declared by the
  * consuming bundle rather than by an attribute here.
  *
  * `supports()` returns true for any entity type that has a
- * registered repository — the actual class-string sniff happens
+ * registered repository -- the actual class-string sniff happens
  * inside the registry.
  */
 final readonly class DefaultEntityResolver implements EntityResolverInterface

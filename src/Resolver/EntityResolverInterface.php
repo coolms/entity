@@ -7,18 +7,18 @@ namespace CoolMS\Entity\Resolver;
 /**
  * Resolves entity references for template context hydration and
  * picker UI search. One resolver per entity type, dispatched via
- * {@see EntityResolverChainInterface} in priority order — custom
+ * {@see EntityResolverChainInterface} in priority order -- custom
  * resolvers can outrank the default reflection-based fallback.
  *
  * Implementations:
  *  - MUST be stateless (the chain is a shared service).
- *  - MUST return JSON-serializable arrays — the result lands inside
+ *  - MUST return JSON-serializable arrays -- the result lands inside
  *    the DocumentInstance's render context and travels through
  *    Messenger envelopes in some flows.
  *  - SHOULD return `null` from `resolve()` on a missing entity; the
  *    hydrating contributor turns that into the `__deleted` sentinel.
  *  - SHOULD apply permission filtering at the repository layer where
- *    relevant — the picker endpoint trusts the resolver to scope
+ *    relevant -- the picker endpoint trusts the resolver to scope
  *    results to the requesting user.
  *
  * Concrete resolvers are collected by `EntityResolverChain` without
