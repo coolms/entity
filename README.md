@@ -48,7 +48,7 @@ translatable, orderable).
 
 ## Related packages
 
-- `coolms/entity-app` -- platform composition: reflection field extraction,
+- `coolms/entity-application` -- platform composition: reflection field extraction,
   the extras-flattening normalizer, widget renderers
 - `coolms/entity-doctrine` -- ORM/DBAL adapters: mapping driver, validation
   listener, generated virtual columns, per-platform schema and upsert managers
