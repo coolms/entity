@@ -10,6 +10,18 @@ major number means here.
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
+## 2.0.0-alpha2 - 2026-09-09
+### Changed
+
+- Follows the renamed application tier and the nested bundle namespace:
+  `coolms/entity-application` (`CoolMS\Entity\Application\`) and
+  `CoolMS\Entity\Bundle\`. `CoolMS\Entity\` is unchanged.
+- The extras docblock points at where the reserved field names now live, in
+  `coolms/core`.
+- Comments, docblocks and changelogs are ascii and no longer name the slice that
+  built a thing.
+- Development-only files are export-ignored.
+
 ## 2.0.0-alpha1 - 2026-09-01
 
 **A pre-release. It carries no compatibility promise**, which is the honest
