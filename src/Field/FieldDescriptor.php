@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace CoolMS\Entity\Field;
 
 /**
- * Phase X-2.5 — resolved field-capability descriptor.
+ * Resolved field-capability descriptor.
  *
  * Output of `EntityFieldDescriptorInterface::describe()`. Carries
  * the post-resolution view of one entity property (label resolved,
  * type stringified, operator defaults filled in, enum values
- * materialised) so consumers — the wizard frontend, the audience
- * materialiser, future generic search UIs — never need to touch
+ * materialised) so consumers -- the wizard frontend, the audience
+ * materialiser, future generic search UIs -- never need to touch
  * Reflection or the underlying `#[FieldMeta]` attribute.
  */
 final readonly class FieldDescriptor
@@ -24,7 +24,7 @@ final readonly class FieldDescriptor
      * @param list<string>               $filterOperators whitelist of CoolMS\Rql operator codes (empty list when !filterable)
      * @param bool                       $sortable        field may appear in RQL sort clauses
      * @param bool                       $searchable      field participates in free-text search
-     * @param array<string, string>|null $enumValues      case-value → display-label map when $type is 'enum', null otherwise
+     * @param array<string, string>|null $enumValues      case-value -> display-label map when $type is 'enum', null otherwise
      */
     public function __construct(
         public string $field,

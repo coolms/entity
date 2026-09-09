@@ -7,7 +7,7 @@ namespace CoolMS\Entity\VirtualField;
 use CoolMS\Entity\Filter\VirtualFieldDescriptor;
 
 /**
- * Phase X-2.5b -- contributes virtual field descriptors for a
+ * Contributes virtual field descriptors for a
  * target entity from outside the entity class itself. Used when
  * the contributing module cannot edit the target entity (e.g.,
  * Document module adding `totalGeneratedDocuments` to Identity's

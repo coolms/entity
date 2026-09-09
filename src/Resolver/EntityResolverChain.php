@@ -8,7 +8,7 @@ namespace CoolMS\Entity\Resolver;
  * Default chain implementation. Iterates registered resolvers in
  * priority order (highest tag `priority` first) and dispatches to the
  * first `supports() === true`. Returns `null` from `resolve()` /
- * empty list from `search()` when no resolver matches —
+ * empty list from `search()` when no resolver matches --
  * `EntityHydratingContributor` turns `null` into the deleted
  * sentinel, the search endpoint surfaces empty as a clean 200.
  *

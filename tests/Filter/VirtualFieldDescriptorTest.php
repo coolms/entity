@@ -10,7 +10,7 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Phase X-2.5b -- ORM-agnostic descriptor for a computed entity field.
+ * ORM-agnostic descriptor for a computed entity field.
  */
 final class VirtualFieldDescriptorTest extends TestCase
 {

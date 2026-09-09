@@ -70,7 +70,7 @@ final class FreeTextProjectorTest extends TestCase
      * Assert an RQL child node is a leaf {@see FilterNode} and return it narrowed.
      *
      * The AST child union is `FilterNode|OrNode|AndNode` (arbitrarily nestable),
-     * but the projector only ever emits flat leaves — asserting that is part of
+     * but the projector only ever emits flat leaves -- asserting that is part of
      * the contract under test. A plain `instanceof` guard (rather than
      * `assertInstanceOf()`) is what actually narrows the union for static
      * analysis, since phpstan-phpunit is not installed.

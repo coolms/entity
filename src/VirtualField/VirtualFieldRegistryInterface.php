@@ -7,7 +7,7 @@ namespace CoolMS\Entity\VirtualField;
 use CoolMS\Entity\Filter\VirtualFieldDescriptor;
 
 /**
- * Phase X-2.5b -- aggregates virtual field descriptors per entity
+ * Aggregates virtual field descriptors per entity
  * alias from two sources:
  *
  *  - `#[VirtualField]` attributes on the target entity's methods

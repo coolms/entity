@@ -7,7 +7,7 @@ namespace CoolMS\Entity\Attribute;
 use Attribute;
 
 /**
- * Phase X-2.5b -- declares a computed (non-column) field for RQL
+ * Declares a computed (non-column) field for RQL
  * filtering on the carrying entity. Applied to a method whose
  * name is used to derive the RQL field name
  * (`getDaysSinceLastLogin` -> `daysSinceLastLogin`).

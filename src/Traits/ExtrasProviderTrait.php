@@ -19,7 +19,7 @@ use CoolMS\Entity\Exception\ReservedPropertyException;
  *    for `[field_name]` property_path notation in dynamic forms).
  *  - The only name guarded at runtime is 'extras' -- the bag itself. All other reserved system
  *    properties (id, createdAt, etc.) protect themselves via their own property declarations.
- *  - Design-time protection against reserved names is enforced by Scaffolding\ReservedFieldNames
+ *  - Design-time protection against reserved names is enforced by CoolMS\Core\Field\ReservedFieldNames
  *    before any field reaches the database.
  */
 trait ExtrasProviderTrait
