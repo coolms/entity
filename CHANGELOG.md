@@ -10,6 +10,21 @@ major number means here.
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
+## 2.0.0-alpha3 - 2026-09-10
+### Added
+
+- `CoolMS\Entity\Attribute\DiscriminatorValue`, which declares the discriminator
+  value for a single-table inheritance entity. It moved here from
+  `coolms/entity-doctrine`, where it had been since it was written.
+- The reason is inheritance, not tidiness: an attribute placed on an entity is
+  acquired by every subclass, so while this class lived in the ORM adapter
+  package, any package declaring a subclass required that adapter merely to
+  state its own discriminator value -- and so did every third-party module
+  extending such an entity. The class itself depends on nothing but
+  `Attribute`; the reader that acts on it stays in `coolms/entity-doctrine`.
+- The previous name remains usable. `coolms/entity-doctrine` keeps it as an
+  alias, and its subscriber resolves both.
+
 ## 2.0.0-alpha2 - 2026-09-09
 ### Changed
 
