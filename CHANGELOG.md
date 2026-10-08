@@ -10,6 +10,36 @@ major number means here.
 history when this file was created. Every entry after that is written in the
 same commit as the change it describes.
 
+## Unreleased
+
+### Fixed: a translated field falls back field by field, in the order the site configures
+
+`TranslatableProviderTrait::translate()` ended its fallback with the first
+locale stored, as a whole. With French holding the caption and German the alt
+text, French stored first, a Spanish request for the alt text answered null,
+and which locale answered at all depended on the order the values had been
+written in.
+
+Each field is now looked for on its own, along one chain: the requested locale,
+its language (`es-MX` or `es_MX` to `es`), the site's default locale, then the
+site's other locales in the configured order. Storage order never decides, and a
+locale the site does not list is never consulted. The chain is the new
+`CoolMS\Entity\ValueObject\LocaleFallback`, passed as `translate()`'s third
+argument:
+
+```php
+$entity->translate('es', 'alt', new LocaleFallback(defaultLocale: 'en', order: ['fr', 'de']));
+```
+
+Without it the default locale is `en`, as before, and no other locale is
+consulted.
+
+### Changed
+
+- `TranslatableProviderInterface::translate()` takes an optional third
+  parameter, `?LocaleFallback $fallback = null`. A class using the trait has it
+  already; one that implements the method itself adds the parameter.
+
 ## 2.0.0-alpha4 - 2026-10-07
 
 ### Added
