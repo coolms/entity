@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace CoolMS\Entity\Traits;
 
+use CoolMS\Entity\ValueObject\LocaleFallback;
+
+use function is_string;
+
 /**
  * ORM-agnostic field-level translations stored in the extras JSON bag.
  *
@@ -23,18 +27,26 @@ trait TranslatableProviderTrait
     // Requires ExtrasProviderTrait
 
     /**
-     * Get translated field value with BCP 47 fallback chain.
-     * ru-RU, then ru, then en, then first available locale, then null.
+     * The field's value in the requested locale, or else in the first locale of
+     * the fallback chain that holds that field: each field is looked for on
+     * its own, so one locale can answer the caption and another the alt text.
+     * The chain is the locale, its language (es-MX to es), the site's default
+     * locale, then the site's other locales in the configured order; see
+     * LocaleFallback. Without one, the default locale is `en` and no other
+     * locale is consulted. Null when no locale in the chain holds the field.
      */
-    public function translate(string $locale, string $field): ?string
+    public function translate(string $locale, string $field, ?LocaleFallback $fallback = null): ?string
     {
         $all = $this->getExtra('translations') ?? [];
 
-        return $all[$locale][$field]
-            ?? $all[$this->extractLanguage($locale)][$field]
-            ?? $all['en'][$field]
-            ?? array_first($all)[$field]
-            ?? null;
+        foreach (($fallback ?? new LocaleFallback())->chainFor($locale) as $candidate) {
+            $value = $all[$candidate][$field] ?? null;
+            if (is_string($value)) {
+                return $value;
+            }
+        }
+
+        return null;
     }
 
     public function setTranslation(string $locale, string $field, string $value): static
@@ -50,10 +62,5 @@ trait TranslatableProviderTrait
     public function getTranslations(): array
     {
         return $this->getExtra('translations') ?? [];
-    }
-
-    private function extractLanguage(string $locale): string
-    {
-        return explode('-', $locale)[0];
     }
 }
