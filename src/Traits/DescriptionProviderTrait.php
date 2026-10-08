@@ -7,7 +7,6 @@ namespace CoolMS\Entity\Traits;
 use CoolMS\Core\Mapping\Column;
 use Symfony\Component\Serializer\Attribute\Groups;
 
-// @phpstan-ignore trait.unused
 trait DescriptionProviderTrait
 {
     public function __construct(
