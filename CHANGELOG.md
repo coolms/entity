@@ -39,6 +39,10 @@ consulted.
 - `TranslatableProviderInterface::translate()` takes an optional third
   parameter, `?LocaleFallback $fallback = null`. A class using the trait has it
   already; one that implements the method itself adds the parameter.
+- A call without a `LocaleFallback` that used to answer from the first stored
+  locale now answers null: without one, only the requested locale, its language
+  and `en` are consulted. A caller that relied on any stored value passes the
+  site's `LocaleFallback`.
 
 ## 2.0.0-alpha4 - 2026-10-07
 
