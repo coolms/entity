@@ -12,6 +12,34 @@ same commit as the change it describes.
 
 ## Unreleased
 
+### Added: every record the default resolver reads is asked of a read guard
+
+`CoolMS\Entity\Security\RecordReadGuardInterface` decides whether a template may
+read a record, and which of its fields:
+
+- `fieldsFor(object $record): ?list<string>` -- the fields a template may read
+  of this record, or null when it may read none of it;
+- `predicateFieldsFor(class-string $class): list<string>` -- the fields a
+  template's filter or sort may name for records of that class.
+
+The application implements it from wherever its security knows who is calling.
+`DefaultEntityResolver` takes it as its fourth constructor argument and asks it
+after loading a record and before extracting anything of it: a refused record
+resolves to null, exactly as a missing one does, so a template cannot tell
+whether a record it may not read exists; a readable one resolves to the fields
+it asked for that the guard allows (`AllowedFields::narrow()`), or to every
+allowed field when it asked for none in particular.
+
+### Changed: with no read guard given, the default resolver reads no record
+
+The fourth argument defaults to `NoRecordIsReadable`, which refuses every
+record and every predicate. A host that builds `DefaultEntityResolver` with
+three arguments, as before, now gets null for every record instead of all of
+its public properties and getters. To keep reading records, pass a guard that
+names, per class, what a template may read; a guard that answers every record
+with every field restores the old behaviour, and is the one choice this package
+does not make for you.
+
 ### Fixed: a translated field falls back field by field, in the order the site configures
 
 `TranslatableProviderTrait::translate()` ended its fallback with the first

@@ -7,6 +7,9 @@ namespace CoolMS\Entity\Resolver;
 use CoolMS\Entity\Registry\FieldExtractorInterface;
 use CoolMS\Entity\Registry\RepositoryRegistryInterface;
 use CoolMS\Entity\Search\FreeTextProjector;
+use CoolMS\Entity\Security\AllowedFields;
+use CoolMS\Entity\Security\NoRecordIsReadable;
+use CoolMS\Entity\Security\RecordReadGuardInterface;
 use CoolMS\Rql\RqlContext;
 use CoolMS\Rql\RqlQuery;
 use CoolMS\Rql\RqlRepositoryInterface;
@@ -26,6 +29,11 @@ use RuntimeException;
  * `supports()` returns true for any entity type that has a
  * registered repository -- the actual class-string sniff happens
  * inside the registry.
+ *
+ * Every record it resolves is asked of the {@see RecordReadGuardInterface}
+ * once loaded: a refused record resolves to null, as a missing one does,
+ * and a readable one only to the fields the guard allows. With no guard
+ * given, none is readable.
  */
 final readonly class DefaultEntityResolver implements EntityResolverInterface
 {
@@ -33,6 +41,7 @@ final readonly class DefaultEntityResolver implements EntityResolverInterface
         private RepositoryRegistryInterface $repositories,
         private FieldExtractorInterface $extractor,
         private FreeTextProjector $projector,
+        private RecordReadGuardInterface $guard = new NoRecordIsReadable(),
     ) {
     }
 
@@ -48,8 +57,13 @@ final readonly class DefaultEntityResolver implements EntityResolverInterface
         if (null === $entity) {
             return null;
         }
+        $allowed = $this->guard->fieldsFor($entity);
+        if (null === $allowed) {
+            return null;
+        }
+        $fields = AllowedFields::narrow($fields, $allowed);
 
-        return $this->extractor->extract($entity, $fields);
+        return [] === $fields ? [] : $this->extractor->extract($entity, $fields);
     }
 
     public function search(string $entityType, string $query, int $limit = 20): array
